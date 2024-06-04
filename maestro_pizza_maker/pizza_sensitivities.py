@@ -8,18 +8,39 @@
 # hint: simple linear regression might be helpful
 
 from maestro_pizza_maker.pizza_menu import PizzaMenu
-
+import numpy as np
+from sklearn.linear_model import LinearRegression
 
 def menu_sensitivity_protein(menu: PizzaMenu) -> float:
-    # TODO: implement according to the description above
-    pass
+    price = np.array([pizza.price for pizza in menu.pizzas])
+    protein = np.array([pizza.protein for pizza in menu.pizzas])
+    protein = protein.reshape(-1, 1)
+
+    lin_regression_model = LinearRegression()
+    lin_regression_model.fit(protein, price)
+
+    return lin_regression_model.coef_[0]
 
 
 def menu_sensitivity_carbs(menu: PizzaMenu) -> float:
     # TODO: implement according to the description above
-    pass
+    price = np.array([pizza.price for pizza in menu.pizzas])
+    carbohydrates = np.array([pizza.carbohydrates for pizza in menu.pizzas])
+    carbohydrates = carbohydrates.reshape(-1, 1)
+
+    lin_regression_model = LinearRegression()
+    lin_regression_model.fit(carbohydrates, price)
+
+    return lin_regression_model.coef_[0]
 
 
 def menu_sensitivity_fat(menu: PizzaMenu) -> float:
     # TODO: implement according to the description above
-    pass
+    price = np.array([pizza.price for pizza in menu.pizzas])
+    avg_fat = np.array([pizza.average_fat for pizza in menu.pizzas])
+    avg_fat = avg_fat.reshape(-1, 1)
+
+    lin_regression_model = LinearRegression()
+    lin_regression_model.fit(avg_fat, price)
+
+    return lin_regression_model.coef_[0]

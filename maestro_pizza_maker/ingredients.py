@@ -28,7 +28,7 @@ class PizzaIngredient:
     fat: np.array
     carbohydrates: float
     calories: float
-
+    expected_taste: float = None #Variable added to optimise the following code: maximize_taste_penalty_price
 
 # enum representing pizza ingredients
 
@@ -53,7 +53,7 @@ class PizzaIngredients(Enum):
         calories=30.0,
     )
     MOZZARELA = PizzaIngredient(
-        name="MOZZRELA",
+        name="MOZZARELA", # Fixed spelling error from MOZZRELA
         price=1.0,
         type=IngredientType.CHEESE,
         protein=10.0,
